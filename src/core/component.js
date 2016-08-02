@@ -171,7 +171,7 @@ Component.prototype = {
   flushToDOM: function () {
     var attrValue = this.attrValue;
     if (!attrValue) { return; }
-    HTMLElement.prototype.setAttribute.call(this.el, this.attrName, this.stringify(attrValue));
+    HTMLElement.prototype.setAttribute.call(this.el, this.attrName, '' + this.stringify(attrValue));
   },
 
   /**
@@ -203,12 +203,12 @@ Component.prototype = {
       this.update(oldData);
     }
 
-    el.emit('componentchanged', {
-      id: this.id,
-      name: this.name,
-      newData: this.getData(),
-      oldData: oldData
-    });
+    // el.emit('componentchanged', {
+    //   id: this.id,
+    //   name: this.name,
+    //   newData: this.getData(),
+    //   oldData: oldData
+    // });
   },
 
   /**

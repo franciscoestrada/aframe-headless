@@ -110,9 +110,13 @@ module.exports = registerElement('a-node', {
     getChildren: {
       value: function () {
         var children = [];
-        for (var i = 0; i < this.children.length; i++) {
-          children.push(this.children[i]);
+
+        if (this.children) {
+          for (var i = 0; i < this.children.length; i++) {
+            children.push(this.children[i]);
+          }
         }
+
         return children;
       }
     },

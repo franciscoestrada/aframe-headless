@@ -1,6 +1,4 @@
 /* global Promise */
-var initMetaTags = require('./metaTags').inject;
-var initWakelock = require('./wakelock');
 var re = require('../a-register-element');
 var systems = require('../system').systems;
 var THREE = require('../../lib/three');
@@ -92,8 +90,6 @@ module.exports = registerElement('a-scene', {
     attachedCallback: {
       value: function () {
         var resize = this.resize.bind(this);
-        initMetaTags(this);
-        initWakelock(this);
         this.initSystems();
 
         window.addEventListener('load', resize);

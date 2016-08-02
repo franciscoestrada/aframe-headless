@@ -1,4 +1,4 @@
-/* global CustomEvent, location */
+/* global location */
 /* Centralized place to reference utilities since utils is exposed to the user. */
 
 var deepAssign = require('deep-assign');
@@ -23,9 +23,9 @@ module.exports.fireEvent = function (el, name, data) {
   data = data || {};
   data.detail = data.detail || {};
   data.detail.target = data.detail.target || el;
-  var evt = new CustomEvent(name, data);
+  var evt = { name: name, detail: data };
   evt.target = el;
-  el.dispatchEvent(evt);
+  // el.dispatchEvent(evt);
 };
 
 /**

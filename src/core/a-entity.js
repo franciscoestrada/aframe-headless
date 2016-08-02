@@ -546,17 +546,21 @@ var proto = Object.create(ANode.prototype, {
    */
   setAttribute: {
     value: function (attr, value, componentPropValue) {
-      var isDebugMode = this.sceneEl && this.sceneEl.getAttribute('debug');
+      var isDebugMode = true; // this.sceneEl && this.sceneEl.getAttribute('debug');
       var componentName = attr.split(MULTIPLE_COMPONENT_DELIMITER)[0];
+
       if (components[componentName]) {
         // Just update one of the component properties
+
         if (typeof value === 'string' && componentPropValue !== undefined) {
           this.updateComponentProperty(attr, value, componentPropValue);
         } else {
           this.updateComponent(attr, value);
         }
         // On debug mode we write the component state to the DOM attributes
-        if (isDebugMode) { this.components[attr].flushToDOM(); }
+        if (isDebugMode) {
+          this.components[attr].flushToDOM();
+        }
         return;
       }
 

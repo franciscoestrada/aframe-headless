@@ -21,11 +21,12 @@ module.exports.System = registerSystem('camera', {
    * entities at the origin (0, 0, 0) are well-centered.
    */
   setupDefaultCamera: function () {
-    var self = this;
     var sceneEl = this.sceneEl;
     var defaultCameraEl;
+
     // setTimeout in case the camera is being set dynamically with a setAttribute.
     setTimeout(checkForCamera);
+
     function checkForCamera () {
       var currentCamera = sceneEl.camera;
       if (currentCamera) {
@@ -40,8 +41,6 @@ module.exports.System = registerSystem('camera', {
       defaultCameraEl.setAttribute('wasd-controls', '');
       defaultCameraEl.setAttribute('look-controls', '');
       sceneEl.appendChild(defaultCameraEl);
-      sceneEl.addEventListener('enter-vr', self.removeDefaultOffset);
-      sceneEl.addEventListener('exit-vr', self.addDefaultOffset);
       sceneEl.emit('camera-ready', {cameraEl: defaultCameraEl});
     }
   },

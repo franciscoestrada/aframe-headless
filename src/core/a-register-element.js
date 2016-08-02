@@ -13,7 +13,7 @@
 */
 
 // Polyfill `document.registerElement`.
-require('document-register-element');
+// require('document-register-element');
 
 var ANode;  // Must declare before AEntity. Initialized at the bottom.
 var AEntity;
@@ -105,6 +105,7 @@ function wrapAEntityMethods (obj) {
   wrapMethods(newObj, AEntityMethods, obj, AEntity.prototype);
   // Copies the remaining properties into the new object.
   copyProperties(obj, newObj);
+
   return newObj;
 }
 
