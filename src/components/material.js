@@ -75,7 +75,7 @@ module.exports.Component = registerComponent('material', {
         scene.addBehavior(self);
       }
     });
-    if (Object.keys(tickProperties).length === 0) {
+    if (scene && Object.keys(tickProperties).length === 0) {
       scene.removeBehavior(this);
     }
   },
